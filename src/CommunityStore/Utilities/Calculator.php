@@ -92,7 +92,9 @@ class Calculator
 
         $adjustedSubtotal = $subTotal;
         $adjustedShippingTotal = $shippingTotal;
-
+        $discountRatio = 1;
+        $discountShippingRatio = 1;
+            
         if (!empty($discounts)) {
             foreach ($discounts as $discount) {
                 if ($discount->getDeductFrom() == 'subtotal') {
@@ -114,9 +116,6 @@ class Calculator
                     }
                 }
             }
-
-            $discountRatio = 1;
-            $discountShippingRatio = 1;
 
             if ($subTotal > 0) {
                 $discountRatio = $adjustedSubtotal / $subTotal;
