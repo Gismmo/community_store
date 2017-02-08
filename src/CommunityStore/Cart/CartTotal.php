@@ -32,10 +32,11 @@ class CartTotal extends RouteController
 
         $taxes = $totals['taxes'];
         $formattedtaxes = array();
-
-        foreach($taxes as $tax) {
-            $tax['taxamount'] = StorePrice::format($tax['taxamount']);
-            $formattedtaxes[] = $tax;
+        if($taxes) {
+            foreach($taxes as $tax) {
+                $tax['taxamount'] = StorePrice::format($tax['taxamount']);
+                $formattedtaxes[] = $tax;
+            }
         }
 
         if (!\Session::get('community_store.smID')) {
