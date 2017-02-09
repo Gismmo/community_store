@@ -490,14 +490,16 @@ class Order
         $taxIncludedTotal = array();
         $taxLabels = array();
 
-        foreach ($taxes as $tax) {
-            if ($tax['taxamount'] > 0) {
-                if ($taxCalc == 'extract') {
-                    $taxIncludedTotal[] = $tax['taxamount'];
-                } else {
-                    $taxTotal[] = $tax['taxamount'];
+        if($taxes) {
+            foreach($taxes as $tax) {
+                if ($tax['taxamount'] > 0) {
+                    if ($taxCalc == 'extract') {
+                        $taxIncludedTotal[] = $tax['taxamount'];
+                    } else {
+                        $taxTotal[] = $tax['taxamount'];
+                    }
+                    $taxLabels[] = $tax['name'];
                 }
-                $taxLabels[] = $tax['name'];
             }
         }
 
